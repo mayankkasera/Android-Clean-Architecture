@@ -7,6 +7,28 @@ plugins {
     id(Plugins.DAGGER_HILT_PLUGIN)
     id(Plugins.SAFEARGS)
     kotlin(Plugins.KOTLIN_KAPT)
+    id("io.gitlab.arturbosch.detekt").version("1.22.0-RC1")
+}
+
+detekt {
+    toolVersion = "1.22.0-RC1"
+    config = files("../config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        md.required.set(true)
+    }
+}
+
+// Kotlin DSL
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    jvmTarget = "1.8"
+}
+tasks.withType<io.gitlab.arturbosch.detekt.DetektCreateBaselineTask>().configureEach {
+    jvmTarget = "1.8"
 }
 
 android {
