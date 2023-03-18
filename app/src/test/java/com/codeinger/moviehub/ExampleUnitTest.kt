@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.codeinger.moviehub
 
 import org.junit.Test
 
