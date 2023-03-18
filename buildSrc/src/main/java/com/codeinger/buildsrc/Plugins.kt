@@ -10,4 +10,5 @@ object Plugins {
     const val KOTLIN_ANDROID = "android"
     const val DAGGER_HILT_PLUGIN = "dagger.hilt.android.plugin"
     const val QUADRANT = "com.gaelmarhic.quadrant"
+    const val KTLINT = "org.jlleitschuh.gradle.ktlint"
 }
