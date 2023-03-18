@@ -1,10 +1,12 @@
 //version constants for the Kotlin DSL dependencies
+
 object Versions {
 
     //app level
     const val GRADLE = "7.4.0"
     const val KOTLIN = "1.7.0"
     const val JVM_TARGET = "1.8"
+    const val KTLINT = "11.3.1"
 
     //compose
     const val COMPOSE_UI_VERSION = "1.2.0"
@@ -61,8 +63,8 @@ object Versions {
     const val JAVAX_INJECT = "1"
 
     //paging
-    const val PAGING= "3.1.1"
+    const val PAGING = "3.1.1"
 
     //BannerSlider
-    const val BANNERSLIDER="2.0.0"
+    const val BANNERSLIDER = "2.0.0"
 }
