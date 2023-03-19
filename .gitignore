@@ -85,6 +85,5 @@ fastlane/report.xml
 app/.externalNativeBuild
 
 *.hprof
-.editorconfig
 
 *.ini

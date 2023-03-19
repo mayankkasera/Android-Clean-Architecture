@@ -27,7 +27,7 @@ subprojects {
             android.set(false)
             ignoreFailures.set(false)
             outputColorName.set("RED")
-            disabledRules.set(setOf("final-newline"))
+            disabledRules.set(setOf("final-newline", "max-line-length"))
             reporters {
                 reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
                 reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
