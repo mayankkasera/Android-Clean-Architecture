@@ -1,0 +1,46 @@
+name: Pull request CI checks
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches:
+      - "release/*"
+      - "develop"
+
+jobs:
+  build:
+    # The type of runner that the job will run on, this job will run on ubuntu machine
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the branch
+      - name: Check out branch
+        id: check_out_branch
+        uses: actions/checkout@v2
+
+      # Using JDK 11
+      - name: Set up JDK 11
+        id: set_up_jdk
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      # Cache Gradle Build Cache to improve workflow execution time
+      - name: Gradle Cache
+        id: gradle-cache
+        uses: ./.github/actions/gradle-cache
+        with:
+          key-prefix: gradle-lint
+
+      # Static Analysis
+      - name: Static Analysis
+        run: ./gradlew ktlintCheck detekt
+
+      # run unit tests
+      - name: Run unit tests
+        id: run_unit_tests
+        run: ./gradlew testDebugUnitTest
+
+      # Build Project
+      - name: Build Project
+        run: ./gradlew assemble
