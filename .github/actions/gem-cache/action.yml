@@ -1,0 +1,15 @@
+name: 'Gem Cache'
+description: 'Cache Gem to improve workflow execution time'
+inputs:
+  key-prefix:
+    description: 'A prefix on the key used to store/restore cache'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ inputs.key-prefix }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ inputs.key-prefix }}-gems-
